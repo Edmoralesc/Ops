@@ -53,5 +53,5 @@ patches:
 # Image patch
 images:
   - name: KUSTOMIZE-DEFINED
-    newName: edwmoral/kubelabs_publicapi
+    newName: emoralesc/kubelabs_publicapi
     newTag: 1.0.0  # <- cambiar la version correcta.
