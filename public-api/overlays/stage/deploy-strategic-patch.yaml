@@ -1,0 +1,9 @@
+apiVersion: apps/v1
+kind: Deployment
+
+# deploy-strategic-patch.yaml
+metadata:
+  name: public-api  # ← this must match exactly the one in base
+
+spec:
+  replicas: 3 
