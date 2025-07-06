@@ -2,24 +2,24 @@ apiVersion: v1
 kind: Namespace
 metadata:
   annotations:
-    note: This is STAGE deployment
+    note: This is PRODUCTION deployment
   labels:
     app: public-api
     team: devops
-  name: public-stage
+  name: public
 ---
 apiVersion: v1
 data:
-  PRIVATE_API: STAGE_ENDPOINT
+  PRIVATE_API: PRODUCTION_ENDPOINT
 kind: ConfigMap
 metadata:
   annotations:
-    note: This is STAGE deployment
+    note: This is PRODUCTION deployment
   labels:
     app: public-api
     team: devops
   name: cm-private-api
-  namespace: public-stage
+  namespace: public
 ---
 apiVersion: v1
 data:
@@ -27,24 +27,24 @@ data:
 kind: Secret
 metadata:
   annotations:
-    note: This is STAGE deployment
+    note: This is PRODUCTION deployment
   labels:
     app: public-api
     team: devops
   name: regcred
-  namespace: public-stage
+  namespace: public
 type: kubernetes.io/dockerconfigjson
 ---
 apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    note: This is STAGE deployment
+    note: This is PRODUCTION deployment
   labels:
     app: public-api
     team: devops
   name: public-api
-  namespace: public-stage
+  namespace: public
 spec:
   ports:
   - name: public-api
@@ -60,12 +60,12 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    note: This is STAGE deployment
+    note: This is PRODUCTION deployment
   labels:
     app: public-api
     team: devops
   name: public-api
-  namespace: public-stage
+  namespace: public
 spec:
   replicas: 3
   selector:
@@ -75,7 +75,7 @@ spec:
   template:
     metadata:
       annotations:
-        note: This is STAGE deployment
+        note: This is PRODUCTION deployment
       labels:
         app: public-api
         team: devops
@@ -105,15 +105,15 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
-    note: This is STAGE deployment
+    note: This is PRODUCTION deployment
   labels:
     app: public-api
     team: devops
   name: public-api
-  namespace: public-stage
+  namespace: public
 spec:
   rules:
-  - host: api-stage.emoralesc.kubelabs.dev
+  - host: api.emoralesc.kubelabs.dev
     http:
       paths:
       - backend:

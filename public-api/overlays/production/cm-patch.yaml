@@ -1,0 +1,4 @@
+- op: replace
+  path: /data/PRIVATE_API
+  value: PRODUCTION_ENDPOINT
+  

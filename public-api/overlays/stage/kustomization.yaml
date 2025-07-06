@@ -15,7 +15,7 @@ commonLabels:
 #   includeSelectors: true
 
 commonAnnotations:
-  note: "This is an STAGE deployment"
+  note: "This is STAGE deployment"
 
 resources:
   - ns.yaml
