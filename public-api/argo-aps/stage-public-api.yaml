@@ -1,0 +1,14 @@
+project: default
+source:
+  repoURL: git@github.com:Edmoralesc/Ops.git
+  path: public-api/overlays/stage
+  targetRevision: HEAD
+destination:
+  server: https://kubernetes.default.svc
+  namespace: public-stage
+syncPolicy:
+  automated:
+    prune: true
+    selfHeal: true
+  syncOptions:
+    - CreateNamespace=true
