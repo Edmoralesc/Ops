@@ -85,7 +85,7 @@ spec:
       - envFrom:
         - configMapRef:
             name: cm-private-api
-        image: emoralesc/kubelabs_publicapi:1.0.0
+        image: emoralesc/kubelabs_publicapi:latest
         imagePullPolicy: Always
         name: public-api
         ports:

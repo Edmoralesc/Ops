@@ -54,4 +54,5 @@ patches:
 images:
   - name: KUSTOMIZE-DEFINED
     newName: emoralesc/kubelabs_publicapi
-    newTag: 1.0.0  # <- cambiar la version correcta.
+    #newTag: 1.0.0  # <- cambiar la version correcta.
+    newTag: latest  # <- cambiar la version correcta.
