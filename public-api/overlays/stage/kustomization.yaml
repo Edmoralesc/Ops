@@ -15,44 +15,43 @@ commonLabels:
 #   includeSelectors: true
 
 commonAnnotations:
-  note: "This is STAGE deployment"
+  note: This is STAGE deployment
 
 resources:
-  - ns.yaml
-  - ../../base
+- ns.yaml
+- ../../base
 
 # https://kubectl.docs.kubernetes.io/references/kustomize/kustomization/patchesstrategicmerge/
 patchesStrategicMerge:
-  - deploy-strategic-patch.yaml
+- deploy-strategic-patch.yaml
 
 # https://kubectl.docs.kubernetes.io/references/kustomize/kustomization/patches/
 # https://fabianlee.org/2022/04/15/kubernetes-kustomize-transformations-with-patchesjson6902/
-patches:
 # yaml file patch
-  - target:
-      kind: ConfigMap
-      name: cm-private-api
-    path: cm-patch.yaml
 
-  - target:
-      kind: Ingress
-      name: public-api
-    path: ing-patch.yaml
 
   # In-line patch
-  - target:
-      kind: Service
-      name: public-api
-    patch: |-
-      - op: add
-        path: /spec/type
-        value: ClusterIP
+patches:
+- path: cm-patch.yaml
+  target:
+    kind: ConfigMap
+    name: cm-private-api
+- path: ing-patch.yaml
+  target:
+    kind: Ingress
+    name: public-api
+- patch: |-
+    - op: add
+      path: /spec/type
+      value: ClusterIP
+  target:
+    kind: Service
+    name: public-api
 
 
 
 # Image patch
-images:
-  - name: KUSTOMIZE-DEFINED
-    newName: emoralesc/kubelabs_publicapi
     #newTag: 1.0.0  # <- cambiar la version correcta.
-    newTag: latest  # <- cambiar la version correcta.
+images:
+- name: KUSTOMIZE-DEFINED
+  newName: emoralesc/kubelabs_publicapi

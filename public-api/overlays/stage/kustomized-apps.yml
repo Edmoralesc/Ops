@@ -1,0 +1,132 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  annotations:
+    note: This is STAGE deployment
+  labels:
+    app: public-api
+    team: devops
+  name: public-stage
+---
+apiVersion: v1
+data:
+  PRIVATE_API: STAGE_ENDPOINT
+kind: ConfigMap
+metadata:
+  annotations:
+    note: This is STAGE deployment
+  labels:
+    app: public-api
+    team: devops
+  name: cm-private-api
+  namespace: public-stage
+---
+apiVersion: v1
+data:
+  .dockerconfigjson: ewoJImF1dGhzIjogewoJCSJodHRwczovL2luZGV4LmRvY2tlci5pby92MS8iOiB7CgkJCSJhdXRoIjogIlpXMXZjbUZzWlhOak9tUmphM0pmY0dGMFgzVjJSMUp1Y0MxRGNtSjNkVTFWUzJWdlNsSkNaV1psV2tZNE9BPT0iCgkJfSwKCQkiaHR0cHM6Ly9pbmRleC5kb2NrZXIuaW8vdjEvYWNjZXNzLXRva2VuIjogewoJCQkiYXV0aCI6ICJaVzF2Y21Gc1pYTmpPbVY1U21oaVIyTnBUMmxLVTFWNlNURk9hVWx6U1c1U05XTkRTVFpKYTNCWVZrTkpjMGx0ZEhCYVEwazJTVzVvV1dFelFrTmtSRTU1VmpOTmVWSjVNVEZaYW14elkwVndibU5UU2prdVpYbEtiMlJJVW5kamVtOTJUREpvTVZscE5XdGlNazV5V2xoSmRWa3lPWFJKYW5BM1NXMVdkRmxYYkhOSmFtOXBXbGN4ZG1OdFJuTmFXRTVxVVVoV2FscFhOVzFpTTFKc1dYazFhRmw1TldwamFVbHpTVzVPYkdNelRuQmlNalZtWVZkUmFVOXBTbTFPUkdjelRXcGpkMDVwTURCTlZFWnNURlJSTWsxRVJYUlBWRTB3V1hrd2QwNVVZM2xPYlUxNlQxUlZORTlVYTJsTVEwcDZZak5XZVZreVZXbFBhVXB1WWpJNWJtSkhWWFJpTWtZeFpFZG5lVWxwZDJsa1dFNXNZMjAxYUdKWFZXbFBhVXBzWWxjNWVWbFhlR3hqTWsxcFRFTktNV1JYYkd0SmFtOXBUMVJWZDAxNlNtaFBWR3QwV1hwQmVVOVRNREJaVkdSclRGZEZkMDlYVlhST1ZHc3lUVEpSTlZwSFRUTk9SR2N4U1c0d2MwbHRiSHBqZVVrMlNXMW9NR1JJUW5wUGFUaDJZa2M1Ym1GWE5IVmFSemxxWVRKV2VVeHRUblppVXpocFRFTktlbVJYU1dsUGFVcHVZakk1Ym1KSFZYUmlNa1l4WkVkbmVXWkVSWGRPVkVGM1RtcFZlazVxU1hoTlZHTjZUVlJOTVUxVVVYbFBVMGx6U1cxR01WcERTVFpYZVVwdlpFaFNkMk42YjNaTU1tZ3hXV2sxYTJJeVRuSmFXRWwxV1RJNWRFbHBkMmxoU0ZJd1kwaE5Oa3g1T1d0aU1rNXlXbGhKZEdOSVNuWmFRelV4WTNrMWFHUllVbTlOUXpWcVlqSXdkbVJZVG14amJXeDFXbTA0YVZoVGQybGhWMFl3U1dwdmVFNTZWWGROVkUxNFRucE5Na3hEU214bFNFRnBUMnBGTTA1VVFYaE5lbFY2VFhwWmMwbHVUbXBpTTBKc1NXcHZhV0l6UW14aWJXeHJTVWM1YlZwdGVIQmliVlptV1ZkT2FscFlUbnBKYVhkcFdWaHdkMGxxYjJsVVJGSXlUVWRTZEdKRk5VTmpSbXhXWVd0a1NGbFhTWGRSZWtwTFpFZGtWVm94YUhsTlZrWTJUa2RSYVdaUkxtaHpVRjluTm01WlowWktOMWs1WWsweVJGVXdZVGhQZFRGRFJFRkRSRE5MVkZGWFYyazVkbkZwYlVSU2NXRmZPSEJxZW5aUlV6Vm5jR3RwYkZsTE9VRTBRV0pXYVZCM056VkxYMnMyZVMxSFdqUlNlR0pVU0ZNdFRsTkNTR2hvTFRkSk9FdFZkVWswWlRjMmNtNWFVMWgwV2xOSVVHdzBOM1ZFVmtkQlJUbEJXR2RLY25SeFdGTktkbEIzTjNGTFVHVndOMVk1TlV0a1gzWTNTWFJuU25aRVpFUTBXRTF5ZDFsUmRsUndNMU5hVDNKa2NXSmZiSFpLVFRCd2VtRmZYelJhTURsNVEzcDZVV1k1TjA1cVdUZFFWVEZOVURadmQwMTJkMHRtU21Jd2NuUXhTSFY1TTFocGJYbEpTalJ2TjBkbGVqWk1PVVExTVVaM1ZtTjNiV05MVERCRGNIZ3pibkJmV0VSQmRrUkVlV0Y0VHpSMldsWXdhR3h4WlVJMVdGSmZhbmd0TldoQ2VqUlZiMXA0T0c1Q2REWlZXVkJXVGpkc1ZYQlZURzlsWW5SRVpuWlBSV3hLYVZGWU4wbEtVa3hxUW1wRFp3PT0iCgkJfSwKCQkiaHR0cHM6Ly9pbmRleC5kb2NrZXIuaW8vdjEvcmVmcmVzaC10b2tlbiI6IHsKCQkJImF1dGgiOiAiWlcxdmNtRnNaWE5qT25ZeExrMVdSR05FWkZsMGRFdGFOMUV6WjJsSFVHWmljVFZ2WTJSV1ZIaDRXbkJhWkRoWldWOW1kWE5RUzBjNVpXb3RTMEo1Wkd4NWMxVjRUMlpRVEhGS1dVbDVVbk14U1RSdWJHcHBYemRmU0dJMFEzTkxlVU5DVVM0dVREUjJNR1J0YkU1Q2NGbFZha2RIWVdJd1F6SktkR2RVWjFoeU1WRjZOR1E9IgoJCX0KCX0KfQ==
+kind: Secret
+metadata:
+  annotations:
+    note: This is STAGE deployment
+  labels:
+    app: public-api
+    team: devops
+  name: regcred
+  namespace: public-stage
+type: kubernetes.io/dockerconfigjson
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    note: This is STAGE deployment
+  labels:
+    app: public-api
+    team: devops
+  name: public-api
+  namespace: public-stage
+spec:
+  ports:
+  - name: public-api
+    port: 3000
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: public-api
+    team: devops
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    note: This is STAGE deployment
+  labels:
+    app: public-api
+    team: devops
+  name: public-api
+  namespace: public-stage
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: public-api
+      team: devops
+  template:
+    metadata:
+      annotations:
+        note: This is STAGE deployment
+      labels:
+        app: public-api
+        team: devops
+      name: public-api
+    spec:
+      containers:
+      - envFrom:
+        - configMapRef:
+            name: cm-private-api
+        image: emoralesc/kubelabs_publicapi
+        imagePullPolicy: Always
+        name: public-api
+        ports:
+        - containerPort: 3000
+          name: public-api
+        resources:
+          limits:
+            cpu: 20m
+            memory: 200Mi
+          requests:
+            cpu: 10m
+            memory: 50Mi
+      imagePullSecrets:
+      - name: regcred
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    note: This is STAGE deployment
+  labels:
+    app: public-api
+    team: devops
+  name: public-api
+  namespace: public-stage
+spec:
+  rules:
+  - host: api-stage.emoralesc.kubelabs.dev
+    http:
+      paths:
+      - backend:
+          service:
+            name: public-api
+            port:
+              number: 3000
+        path: /
+        pathType: Prefix
+      - backend:
+          service:
+            name: public-api
+            port:
+              number: 3000
+        path: /graphql
+        pathType: Prefix
