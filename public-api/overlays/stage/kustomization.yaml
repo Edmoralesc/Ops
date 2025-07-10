@@ -55,4 +55,3 @@ patches:
 images:
 - name: KUSTOMIZE-DEFINED
   newName: emoralesc/kubelabs_publicapi
-  newTag: 1.0.0 
